@@ -4,7 +4,7 @@ import * as blogService from "../../services/blog/blog.service";
 export const getAllBlogs = async (req: Request, res: Response): Promise<void> => {
   try {
     const blogs = await blogService.getAllBlogs();
-    res.status(200).json({ success: true, data: blogs });
+    res.status(200).json({ success: true, data:{ data: blogs}  });
     
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
@@ -20,7 +20,7 @@ export const getBlogsById = async (req:Request, res:Response): Promise<void> =>{
             res.status(404).json({ success: false, message: "Blog not found" });
             return;
         }
-        res.status(200).json({ success: true, data: blog });
+        res.status(200).json({ success: true, data: {data: blog} });
     }catch (error: any){
       res.status(500).json({success: false, message: error.message})
     }

@@ -2,11 +2,13 @@ import express from 'express';
 import { config } from "./config";
 import v1Routes from "./api/routes/index";
 import cors from 'cors'
+import helmet from 'helmet';
 
 const app = express();
 const PORT = config.port || 8081;
 
 app.use(express.json());
+app.use(helmet())
 app.use(cors({
   origin: 'http://localhost:5173', // or '*' for all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
