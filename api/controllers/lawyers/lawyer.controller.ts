@@ -16,7 +16,7 @@ export const getAllLawyers = async (req: Request, res: Response): Promise<void> 
 export const getAllLawyerById = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const lawyer = await lawyerService.getLawyerById(Number(id));
+    const lawyer = await lawyerService.getLawyerById(id);
      if(!lawyer) {
         res.status(404).json({ success: false, message: "Lawyer not found" });
         return;
